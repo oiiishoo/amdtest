@@ -1,0 +1,2 @@
+# amdtest
+amd test
