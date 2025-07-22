@@ -1,6 +1,4 @@
-#define _WINSOCK_DEPRECATED_NO_WARNINGS
-#include <winsock2.h>
-#include <ws2tcpip.h>
+#include <windows.h>
 #include <iostream>
 #include<thread>
 volatile bool locked = 1;
@@ -8,14 +6,14 @@ alignas(64) size_t p1 = 0;
 alignas(64) size_t p2 = 0; 
 volatile int shifted = 0;
 void task(
-    //bool& locked,size_t& p1
+    
 ) {
     SetThreadAffinityMask(GetCurrentThread(), 1<<(shifted+5));
     while (locked) {
         p1++;
     }
 }
-void task2(//bool& locked,size_t& p2
+void task2(
 ) {
     SetThreadAffinityMask(GetCurrentThread(), 1<<4);
     while (locked) {
